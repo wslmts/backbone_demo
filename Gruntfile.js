@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     },
     watch: {
       cmp: {
-        files: 'cmp/**/*.js',
+        files: 'cmp/**/*.*',
         tasks: ['browserify'],
         options: {
           interrupt: true
