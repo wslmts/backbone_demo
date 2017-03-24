@@ -7,10 +7,13 @@ var SampleCollection = require('../collection/c.js');
 module.exports = Backbone.View.extend({
   el: '.list',
   template: template,
+  viewModel:{
+      items:[]
+  },
   initialize: function () {
     this.collection = new SampleCollection();
     this.collection.on('add', this.updateList, this);
-    this.collection.add('hh');
+    this.collection.add({name:'111'});
   },
   events: {
     'change .input': 'inputChanged'
@@ -23,7 +26,7 @@ module.exports = Backbone.View.extend({
   },
   render: function () {
       var items=this.collection.models.map(function(v,i){
-         return v.get('name')||"nothing";
+         return v.get('name');
       });
       this.viewModel={
           items:items
