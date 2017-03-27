@@ -22,15 +22,15 @@ module.exports = Backbone.View.extend({
       this.collection.add({name:e.target.value});
   },
   updateList: function () {
-      this.render();
-  },
-  render: function () {
       var items=this.collection.models.map(function(v,i){
-         return v.get('name');
+          return v.get('name');
       });
       this.viewModel={
           items:items
       }
+      this.render();
+  },
+  render: function () {
     this.el.innerHTML = Mustache.to_html(this.template, this.viewModel);
   }
 });
